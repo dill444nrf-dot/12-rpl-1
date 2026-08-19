@@ -39,7 +39,7 @@ class FilmController extends Controller
                 'rating'=> 'required|numeric',
                 'desc'=>'required',
                 'tahun_rilis'=>'required|date',
-                'poster'=>'required|string',
+                'poster'=>'required|image',
                 'sutradara'=>'required|string',
                 'id_aktor'=>'required|array',
                 'id_aktor.*'=>'exists:aktors,id'
@@ -120,7 +120,7 @@ class FilmController extends Controller
             'rating'=> 'required|numeric',
             'desc'=>'required',
             'tahun_rilis'=>'required|date',
-            'poster'=>'required|string',
+            'poster'=>'required|image',
             'sutradara'=>'required|string',
             'id_aktor'=>'required|array',
             'id_aktor.*'=>'exists:aktors,id'

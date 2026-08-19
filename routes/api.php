@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\GenreController;
 use App\Http\Controllers\Api\AktorController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FilmController;
+use App\Http\Controllers\Api\PublicController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -37,4 +38,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/films/{id}',[FilmController::class,'update']);
     Route::delete('/films/{id}',[FilmController::class,'destroy']);
 
+    Route::prefix('public')->group(function () {
+
+    Route::get('/films', [PublicController::class, 'films']);
+    Route::get('/films/{id}', [PublicController::class, 'detailFilm']);
+
+    Route::get('/genres', [PublicController::class, 'genres']);
+    Route::get('/genres/{id}/films', [PublicController::class, 'filmByGenre']);
+
+    Route::get('/actors', [PublicController::class, 'actors']);
+    Route::get('/actors/{id}/films', [PublicController::class, 'filmByActor']);
+
+    Route::get('/search', [PublicController::class, 'search']);
+
+    });
 });
